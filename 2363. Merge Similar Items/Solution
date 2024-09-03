@@ -1,0 +1,31 @@
+public class Solution {
+    public IList<IList<int>> MergeSimilarItems(int[][] items1, int[][] items2) {
+        Dictionary<int, int> map = new Dictionary<int, int>();
+
+        foreach (var item in items1) {
+            int value = item[0];
+            int weight = item[1];
+            if (map.ContainsKey(value)) {
+                map[value] += weight;
+            } else {
+                map[value] = weight;
+            }
+        }
+        foreach (var item in items2) {
+            int value = item[0];
+            int weight = item[1];
+            if (map.ContainsKey(value)) {
+                map[value] += weight;
+            } else {
+                map[value] = weight;
+            }
+        }
+        var result = map
+            .OrderBy(pair => pair.Key) 
+            .Select(pair => (IList<int>)new List<int> { pair.Key, pair.Value }) 
+            .ToList(); 
+
+        return result;
+
+    }
+}
