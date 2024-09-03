@@ -1,0 +1,23 @@
+public class Solution {
+    public int GetLucky(string s, int k) {
+        int total = 0;
+        for(int i = 0; i < s.Length; i++){
+            int num = s[i] - 'a' + 1;
+            while(num > 0){
+                total+= num%10;
+                num/=10;
+            }
+        }
+        k--;
+        while(k > 0){
+            int newTotal = 0;
+            while(total > 0){
+                newTotal+= total % 10;
+                total /= 10;
+            }
+            k--;
+            total = newTotal;
+        }
+        return total;
+    }
+}
