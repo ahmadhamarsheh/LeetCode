@@ -1,0 +1,49 @@
+public class Solution {
+    public string MergeAlternately(string word1, string word2) {
+        string word = "";
+        int i = 0;
+        int j = 0;
+        int c = 0;
+        while(i < word1.Length && j < word2.Length){
+            if(c % 2 == 0){
+                word += word1[i];
+                i++;
+            }
+            else{
+                word += word2[j];
+                j++;
+            }
+            c++;
+        }
+        while(i < word1.Length){
+            word += word1[i];
+            i++;
+        }
+        while(j < word2.Length){
+            word += word2[j];
+            j++;
+        }
+        return word;
+    }
+}
+
+//Second Solution
+/*
+int i = 0, j = 0;
+var result = new StringBuilder();
+
+while (i < word1.Length || j < word2.Length)
+{
+    if (i < word1.Length)
+    {
+        result.Append(word1[i]);
+        i++;
+    }
+    if (j < word2.Length)
+    {
+        result.Append(word2[j]);
+        j++;
+    }
+}
+return result.ToString();
+*/
