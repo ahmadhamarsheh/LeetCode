@@ -1,0 +1,25 @@
+public class Solution {
+    public void DuplicateZeros(int[] arr) {
+        int [] tmp = new int [arr.Length];
+        int s = 0;
+        int d = 0; 
+        while(s < arr.Length && d < tmp.Length){
+            if(arr[s] == 0){
+                tmp[d++] = 0;
+                if(d < tmp.Length){
+                    tmp[d++] = 0;
+                }else{
+                    break;
+                }
+            }
+            else{
+                tmp[d++] = arr[s];
+            }
+            s++;
+        }
+        for(int i = 0; i < tmp.Length; i++){
+            arr[i] = tmp[i];
+        }
+    }
+}
+Author : @Ahmadhamarsheh
