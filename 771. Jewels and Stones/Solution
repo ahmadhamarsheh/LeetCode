@@ -1,0 +1,35 @@
+public class Solution {
+    public int NumJewelsInStones(string jewels, string stones) {
+        var jewelsSet = new HashSet<char>(jewels);
+        var result = 0;
+        foreach(var stone in stones)
+            result += jewelsSet.Contains(stone) ? 1 : 0;
+        
+        return result;
+    }
+}
+
+Author : @ahmadhamarsheh
+
+
+//second solution
+/*
+        Dictionary<char,int> map = new Dictionary<char,int>();
+        char [] arr = stones.ToCharArray();
+        for(int i = 0; i < arr.Length; i++){
+            if(!map.ContainsKey(arr[i])){
+                map[arr[i]] = 1;
+            }
+            else{
+                map[arr[i]]++;
+            }
+        }
+        int sum = 0;
+        char [] arr2 = jewels.ToCharArray();
+        for(int j = 0; j < arr2.Length; j++){
+            if(map.ContainsKey(arr2[j])){
+                sum+= map[arr2[j]];
+            }
+        }
+        return sum;
+*/
