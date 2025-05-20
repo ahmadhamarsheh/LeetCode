@@ -1,0 +1,33 @@
+public class Solution
+{
+    public string LongestPalindrome(string s)
+    {
+        if (string.IsNullOrEmpty(s) || s.Length < 1)
+            return "";
+
+        string result = "";
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            string temp1 = ExpandFromCenter(s, i, i);
+            if (temp1.Length > result.Length)
+                result = temp1;
+
+            string temp2 = ExpandFromCenter(s, i, i + 1);
+            if (temp2.Length > result.Length)
+                result = temp2;
+        }
+
+        return result;
+    }
+
+    private string ExpandFromCenter(string s, int left, int right)
+    {
+        while (left >= 0 && right < s.Length && s[left] == s[right])
+        {
+            left--;
+            right++;
+        }
+        return s.Substring(left + 1, right - left - 1);
+    }
+}
